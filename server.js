@@ -10,11 +10,15 @@ const port = 3000;
 
 app.use(express.json());
 
-app.use("/api/users", userRouter);
-
 app.get("/", (req, res) => {
-    res.send("hello how are you?")
+  res.status(200).send("hello how are you?");
 })
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something went wrong!');
+});
 
 (async () => {
   try {
