@@ -12,6 +12,10 @@ app.use(express.json());
 
 app.use("/api/users", userRouter);
 
+app.get("/", (req, res) => {
+    res.send("hello how are you?")
+})
+
 (async () => {
   try {
     // Start the server after syncing
