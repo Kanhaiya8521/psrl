@@ -9,10 +9,11 @@ const router = express.Router();
 const port = 3000;
 
 app.use(express.json());
-
+app.use("/api/users", userRouter)
 app.get("/", (req, res) => {
   res.status(200).send("hello how are you?");
 })
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {
