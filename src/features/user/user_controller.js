@@ -1,5 +1,6 @@
 // import UserModel from "./user_model.js";
 import UserModel from "./user_model.js";
+import Profile from "../profile/profile_model.js";
 import crypto from "crypto";
 
 export default class UserController {
@@ -31,6 +32,20 @@ export default class UserController {
       const createUser = await UserModel.create({ phone });
       // const user = await UserModel.findAll();
       res.status(200).send(createUser);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  };
+
+  findUser = async (req, res) => {
+    try {
+      // Example usage
+      const user = await UserModel.findAll({
+        where: { user_id: "e5789e67" },
+        include: Profile, // Include the Profile model in the query
+      });
+      res.status(200).send(user);
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: "Internal Server Error" });

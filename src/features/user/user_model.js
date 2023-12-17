@@ -1,5 +1,6 @@
 import { Sequelize, DataTypes } from "sequelize";
 import db from "../../config/database.js";
+// import Profile from "./../profile/profile_model.js"
 const User = db.sequelize.define(
   "User",
   {
@@ -24,5 +25,9 @@ const User = db.sequelize.define(
     // tableName: "User",
   }
 );
+
+// Set up the association with explicit foreign key names
+// User.hasOne(Profile, { foreignKey: "user_id" }); // Specify the foreign key column in Profile
+// Profile.belongsTo(User, { foreignKey: "user_id" }); // Specify the foreign key column in Profile
 
 export default User;
