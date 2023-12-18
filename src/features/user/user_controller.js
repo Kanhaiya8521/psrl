@@ -41,10 +41,7 @@ export default class UserController {
   findUser = async (req, res) => {
     try {
       // Example usage
-      const user = await UserModel.findAll({
-        where: { user_id: "e5789e67" },
-        include: Profile, // Include the Profile model in the query
-      });
+      const user = await UserModel.findAll();
       res.status(200).send(user);
     } catch (error) {
       console.error(error);
